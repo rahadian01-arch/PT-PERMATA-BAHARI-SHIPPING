@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>PT Permata Bahari Shipping - Company Profile</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap');
+  /* Reset & base */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Header */
+  header {
+    position: sticky;
+    top: 0;
+    background: rgba(255 255 255 / 0.95);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid #e5e7eb;
+    z-index: 1000;
+  }
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+  }
+  .logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    cursor: default;
+  }
+  nav {
+    display: flex;
+    gap: 28px;
+  }
+  nav a {
+    color: #1f2937;
+    font-weight: 600;
+    text-decoration: none;
+    position: relative;
+    padding: 6px 0;
+  }
+  nav a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    left: 0;
+    bottom: -4px;
+    transition: width 0.3s ease;
+  }
+  nav a:hover,
+  nav a:focus {
+    color: #0f766e;
+    outline: none;
+  }
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+  /* Hamburger for mobile */
+  .mobile-toggle {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #1f2937;
+  }
+
+  /* Hero */
+  .hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 24px;
+    background: linear-gradient(135deg, #0f766e, #14b8a6);
+    color: #f0fdfa;
+    text-align: center;
+    border-radius: 0 0 48px 48px;
+  }
+  .hero h1 {
+    font-size: 3.6rem;
+    font-weight: 900;
+    max-width: 700px;
+    margin: 0 auto 24px;
+    line-height: 1.1;
+  }
+  .hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+    color: #d1fae5;
+  }
+
+  /* Sections */
+  section {
+    padding: 64px 24px;
+  }
+  h2.section-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #0f766e;
+    margin-bottom: 48px;
+    text-align: center;
+  }
+  /* About */
+  .about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.8;
+  }
+
+  /* Services */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .service-card {
+    background: #e0f2f1;
+    border-radius: 16px;
+    padding: 36px 28px;
+    box-shadow: 0 4px 12px rgb(15 118 110 / 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .service-card:hover,
+  .service-card:focus-within {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 24px rgb(15 118 110 / 0.25);
+  }
+  .service-icon {
+    font-size: 40px;
+    color: #0f766e;
+    margin-bottom: 20px;
+  }
+  .service-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #065f46;
+    margin-bottom: 12px;
+  }
+  .service-desc {
+    color: #065f46d9;
+    font-size: 1rem;
+  }
+
+  /* Fleet */
+  .fleet-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 36px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .fleet-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgb(0 0 0 / 0.05);
+    transition: box-shadow 0.3s ease;
+  }
+  .fleet-card:hover,
+  .fleet-card:focus-within {
+    box-shadow: 0 10px 28px rgb(0 0 0 / 0.12);
+  }
+  .fleet-image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+  .fleet-info {
+    padding: 16px 20px;
+  }
+  .fleet-name {
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #064e3b;
+    margin-bottom: 8px;
+  }
+  .fleet-details {
+    color: #065f466e;
+    font-size: 0.9rem;
+  }
+
+  /* Contact */
+  .contact-container {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.6;
+  }
+  .contact-item {
+    margin-bottom: 24px;
+  }
+  .contact-label {
+    font-weight: 600;
+    color: #0f766e;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .contact-detail {
+    color: #1f2937;
+  }
+  .contact-detail a {
+    color: #0f766e;
+    text-decoration: underline;
+  }
+  /* Footer */
+  footer {
+    background: #0f766e;
+    color: #d1fae5;
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .services-grid, .fleet-list {
+      grid-template-columns: 1fr;
+    }
+    nav {
+      display: none;
+    }
+    .mobile-toggle {
+      display: block;
+    }
+  }
+</style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container header-container">
+      <div class="logo" aria-label="PT Permata Bahari Shipping Logo">Permata Bahari Shipping</div>
+      <nav role="navigation" aria-label="Primary Navigation">
+        <a href="#about" tabindex="0">About Us</a>
+        <a href="#services" tabindex="0">Services</a>
+        <a href="#fleet" tabindex="0">Fleet</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </nav>
+      <button class="mobile-toggle" aria-label="Toggle Navigation Menu">&#9776;</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Company introduction">
+      <h1>Reliable Maritime Shipping & Logistics Solutions</h1>
+      <p>PT Permata Bahari Shipping is a leading Indonesian shipping company committed to delivering safe, efficient, and innovative maritime transport and logistics services worldwide.</p>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="section-title">About Us</h2>
+      <article class="about-content">
+        <p>PT Permata Bahari Shipping has grown into a trusted partner for global shipping and logistics. Our dedication to safety, environmental responsibility, and customer satisfaction takes us beyond simple transport — we deliver value and peace of mind.</p>
+        <p>Our extensive experience, skilled team, and modern fleet allow us to serve diverse industries including bulk cargo, container shipping, and offshore support. We continuously invest in technology and training to exceed international standards.</p>
+      </article>
+    </section>
+
+    <section id="services" aria-labelledby="services-title">
+      <h2 id="services-title" class="section-title">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card" tabindex="0" aria-describedby="service1-desc">
+          <div class="service-icon" aria-hidden="true">🚢</div>
+          <h3 class="service-title">Shipping & Freight</h3>
+          <p id="service1-desc" class="service-desc">Comprehensive shipping solutions for bulk, container, and specialized cargo ensuring timely and secure delivery.</p>
+        </div>
+        <div class="service-card" tabindex="0" aria-describedby="service2-desc">
+          <div class="service-icon" aria-hidden="true">⚓</div>
+          <h3 class="service-title">Port & Terminal Services</h3>
+          <p id="service2-desc" class="service-desc">Efficient port handling, stevedoring, and cargo storage with modern facilities and expert staff.</p>
+        </div>
+        <div class="service-card" tabindex="0" aria-describedby="service3-desc">
+          <div class="service-icon" aria-hidden="true">⛴️</div>
+          <h3 class="service-title">Crew & Vessel Management</h3>
+          <p id="service3-desc" class="service-desc">Professional crew staffing and vessel management to ensure operational excellence and regulatory compliance.</p>
+        </div>
+        <div class="service-card" tabindex="0" aria-describedby="service4-desc">
+          <div class="service-icon" aria-hidden="true">📦</div>
+          <h3 class="service-title">Logistics & Supply Chain</h3>
+          <p id="service4-desc" class="service-desc">Integrated logistics and supply chain management optimized for efficiency, transparency, and cost-effectiveness.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="fleet" aria-labelledby="fleet-title">
+      <h2 id="fleet-title" class="section-title">Our Fleet</h2>
+      <div class="fleet-list">
+        <article class="fleet-card" tabindex="0" aria-label="Bulk Carrier Vessel">
+          <img class="fleet-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5ae5b392-eab6-41cf-8a45-988d5c5f8f54.png" alt="Modern Bulk Carrier Vessel at sea" loading="lazy" onerror="this.style.display='none'" />
+          <div class="fleet-info">
+              <h3 class="fleet-name">Bulk Carrier</h3>
+              <p class="fleet-details">Capacity: 50,000 DWT – Specialized in transporting dry bulk commodities globally.</p>
+          </div>
+        </article>
+        <article class="fleet-card" tabindex="0" aria-label="Container Ship Vessel">
+          <img class="fleet-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3f3eee71-38f0-4fb2-a45a-0d9e2144d31a.png" alt="Large Container Ship docked at port" loading="lazy" onerror="this.style.display='none'" />
+          <div class="fleet-info">
+              <h3 class="fleet-name">Container Ship</h3>
+              <p class="fleet-details">Capacity: 1,500 TEU – Reliable container transport with advanced navigation and cargo handling systems.</p>
+          </div>
+        </article>
+        <article class="fleet-card" tabindex="0" aria-label="Tug Boat Vessel">
+          <img class="fleet-image" src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ac91f81e-b4c8-4d1f-8182-016c995ac83d.png" alt="Powerful Tug Boat assisting large ship" loading="lazy" onerror="this.style.display='none'" />
+          <div class="fleet-info">
+              <h3 class="fleet-name">Tug Boat</h3>
+              <p class="fleet-details">Vital port maneuvering and emergency towing services ensuring vessel safety and punctuality.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" class="section-title">Contact Us</h2>
+      <address class="contact-container">
+        <div class="contact-item">
+          <strong class="contact-label">Address</strong>
+          <p class="contact-detail">Jl. Pulau Irian No. 26, Kec Samarinda Ilir Kel. Karang Mumus Samarinda, East Kalimantan 75113</p>
+        </div>
+        <div class="contact-item">
+          <strong class="contact-label">Phone</strong>
+          <p class="contact-detail">+62 21 80600800</p>
+        </div>
+        <div class="contact-item">
+          <strong class="contact-label">Fax</strong>
+          <p class="contact-detail">+62 21 80600801</p>
+        </div>
+        <div class="contact-item">
+          <strong class="contact-label">Email</strong>
+          <p class="contact-detail"><a href="mailto:contact@permatashipping.com">contact@permatashipping.com</a></p>
+        </div>
+        <div class="contact-item">
+          <strong class="contact-label">Website</strong>
+          <p class="contact-detail"><a href="https://permata-bahari.com" target="_blank" rel="noopener noreferrer">https://permata-bahari.com</a></p>
+        </div>
+      </address>
+    </section>
+  </main>
+
+  <footer role="contentinfo">
+    &copy; 2024 PT Permata Bahari Shipping. All rights reserved.
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const toggleBtn = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('nav');
+    toggleBtn.addEventListener('click', () => {
+      if (nav.style.display === 'flex') {
+        nav.style.display = 'none';
+      } else {
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'column';
+        nav.style.gap = '16px';
+        nav.style.backgroundColor = 'rgba(255 255 255 / 0.95)';
+        nav.style.position = 'absolute';
+        nav.style.top = '60px';
+        nav.style.right = '24px';
+        nav.style.padding = '16px 24px';
+        nav.style.borderRadius = '12px';
+        nav.style.boxShadow = '0 4px 24px rgba(0,0,0,0.15)';
+      }
+    });
+
+    // Close mobile menu when a nav item is clicked (for better UX)
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        if(window.innerWidth <= 640){
+          nav.style.display = 'none';
+        }
+      });
+    });
+
+    // Responsive reset on resize
+    window.addEventListener('resize', () => {
+      if(window.innerWidth > 640){
+        nav.style.display = 'flex';
+        nav.style.flexDirection = 'row';
+        nav.style.gap = '28px';
+        nav.style.backgroundColor = 'transparent';
+        nav.style.position = 'static';
+        nav.style.padding = '0';
+        nav.style.borderRadius = '0';
+        nav.style.boxShadow = 'none';
+      } else {
+        nav.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
+
